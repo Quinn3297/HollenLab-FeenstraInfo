@@ -1,0 +1,190 @@
+%-read values from file into matrix
+%The first column is the LateralDistance, the second is the 
+%Potential values
+fileID1=fopen('Grad1.12');
+c1=textscan(fileID1,'%f%f');
+fclose(fileID1);
+A1=cell2mat(c1);
+fileID2=fopen('Grad2.12');
+c2=textscan(fileID2,'%f%f');
+fclose(fileID2);
+A2=cell2mat(c2);
+fileID3=fopen('Grad3.12');
+c3=textscan(fileID3,'%f%f');
+fclose(fileID3);
+A3=cell2mat(c3);
+fileID4=fopen('Grad4.12');
+c4=textscan(fileID4,'%f%f');
+fclose(fileID4);
+A4=cell2mat(c4);
+fileID5=fopen('Grad5.12');
+c5=textscan(fileID5,'%f%f');
+fclose(fileID5);
+A5=cell2mat(c5);
+fileID6=fopen('Grad6.12');
+c6=textscan(fileID6,'%f%f');
+fclose(fileID6);
+A6=cell2mat(c6);
+fileID7=fopen('Grad7.12');
+c7=textscan(fileID7,'%f%f');
+fclose(fileID7);
+A7=cell2mat(c7);
+fileID8=fopen('Grad8.12');
+c8=textscan(fileID8,'%f%f');
+fclose(fileID8);
+A8=cell2mat(c8);
+fileID9=fopen('Grad9.12');
+c9=textscan(fileID9,'%f%f');
+fclose(fileID9);
+A9=cell2mat(c9);
+fileID10=fopen('Grad10.12');
+c10=textscan(fileID10,'%f%f');
+fclose(fileID10);
+A10=cell2mat(c10);
+fileID11=fopen('Grad11.12');
+c11=textscan(fileID11,'%f%f');
+fclose(fileID11);
+A11=cell2mat(c11);
+fileID12=fopen('Grad12.12');
+c12=textscan(fileID12,'%f%f');
+fclose(fileID12);
+A12=cell2mat(c12);
+fileID13=fopen('Grad13.12');
+c13=textscan(fileID13,'%f%f');
+fclose(fileID13);
+A13=cell2mat(c13);
+fileID14=fopen('Grad14.12');
+c14=textscan(fileID14,'%f%f');
+fclose(fileID14);
+A14=cell2mat(c14);
+fileID15=fopen('Grad15.12');
+c15=textscan(fileID15,'%f%f');
+fclose(fileID15);
+A15=cell2mat(c15);
+fileID0=fopen('Grad_0.12');
+c0=textscan(fileID0, '%f%f');
+fclose(fileID0);
+A0=cell2mat(c0);
+%%%%%%
+%%%%%%
+%%%%%%
+%%%%%%
+%-remove unwanted data; Values of LatDis you are not
+%concerned with. Also remove first row, because distance
+%values are negative and that could intefere with the 
+%plot because of the flipping process
+%%%You can read the file in the command line and look for the
+%rows and columns you wish to keep.
+a1=A1(2:401,1:2);
+a2=A2(2:401,1:2);
+a3=A3(2:401,1:2);
+a4=A4(2:401,1:2);
+a5=A5(2:401,1:2);
+a6=A6(2:401,1:2);
+a7=A7(2:401,1:2);
+a8=A8(2:401,1:2);
+a9=A9(2:401,1:2);
+a10=A10(2:401,1:2);
+a11=A11(2:401,1:2);
+a12=A12(2:401,1:2);
+a13=A13(2:401,1:2);
+a14=A14(2:401,1:2);
+a15=A15(2:401,1:2);
+a0=A0(2:401,1:2);
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%-seperate matrix into it's colimn vectors, 'Bi', for 
+%specific T-S Bias and 'a', which is the LatDis
+B1=a1(:,2);
+B2=a2(:,2);
+B3=a3(:,2);
+B4=a4(:,2);
+B5=a5(:,2);
+B6=a6(:,2);
+B7=a7(:,2);
+B8=a8(:,2);
+B9=a9(:,2);
+B10=a10(:,2);
+B11=a11(:,2);
+B12=a12(:,2);
+B13=a13(:,2);
+B14=a14(:,2);
+B15=a15(:,2);
+B0=a0(:,2);
+%
+a=a1(:,1);
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%-flip LatDis, multiply by -1 and concatenate with the two
+%this allows us to create the parabolic shape we want
+Na=(flipud(a))*(-1);
+FullLatDis=cat(1,Na,a);
+%-flip and concatenate all Bi, because potential is spherically 
+%symmetric
+NB1=flipud(B1);
+FB1=cat(1,NB1,B1);
+NB2=flipud(B2);
+FB2=cat(1,NB2,B2);
+NB3=flipud(B3);
+FB3=cat(1,NB3,B3);
+NB4=flipud(B4);
+FB4=cat(1,NB4,B4);
+NB5=flipud(B5);
+FB5=cat(1,NB5,B5);
+NB6=flipud(B6);
+FB6=cat(1,NB6,B6);
+NB7=flipud(B7);
+FB7=cat(1,NB7,B7);
+NB8=flipud(B8);
+FB8=cat(1,NB8,B8);
+NB9=flipud(B9);
+FB9=cat(1,NB9,B9);
+NB10=flipud(B10);
+FB10=cat(1,NB10,B10);
+NB11=flipud(B11);
+FB11=cat(1,NB11,B11);
+NB12=flipud(B12);
+FB12=cat(1,NB12,B12);
+NB13=flipud(B13);
+FB13=cat(1,NB13,B13);
+NB14=flipud(B14);
+FB14=cat(1,NB14,B14);
+NB15=flipud(B15);
+FB15=cat(1,NB15,B15);
+NB0=flipud(B0);
+FB0=cat(1,NB0,B0);
+%%%%%
+%%%%%
+%%%%%
+%%%%%
+%-make all FBi column matricies into row matricies and
+%concatenate into a matrix. Display matrix as color map using 
+%'imagesc'
+%%%
+%TFB0 is the Flat Band Condition. The amount of BB is the
+%difference between TFB0 and FBi
+TFB0=FB0.';
+fb=TFB0;
+TFB1=fb-FB1.';
+TFB2=fb-FB2.';
+TFB3=fb-FB3.';
+TFB4=fb-FB4.';
+TFB5=fb-FB5.';
+TFB6=fb-FB6.';
+TFB7=fb-FB7.';
+TFB8=fb-FB8.';
+TFB9=fb-FB9.';
+TFB10=fb-FB10.';
+TFB11=fb-FB11.';
+TFB12=fb-FB12.';
+TFB13=fb-FB13.';
+TFB14=fb-FB14.';
+TFB15=fb-FB15.';
+%%%
+C=vertcat(TFB15,TFB14,TFB13,TFB12,TFB11,TFB10,TFB9,TFB8,TFB7,TFB6,TFB5,TFB4,TFB3,TFB2,TFB1);
+figure,imagesc(C)
+colorbar
