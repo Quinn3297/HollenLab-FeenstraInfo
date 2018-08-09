@@ -1,2 +1,3 @@
 # HollenLab-FeenstraInfo
-Haha, fooled you. There is no purpose to this page.
+%% This respository is for other members of Hollen Lab to recreate figures that I have made using Feenstra's Tip
+% Induced Band Bending program
